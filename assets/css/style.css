@@ -47,7 +47,17 @@
 body, html{
 	margin: 0px;
 	padding: 0px;
+	overflow:hidden;
 }
+
+#text::-webkit-scrollbar { 
+    display: none; 
+ }
+
+#pictures::-webkit-scrollbar { 
+    display: none; 
+ }
+
 
 .left{
 	width: 50%;
@@ -55,4 +65,8 @@ body, html{
 
 .right{
 	width: 50%;
+}
+
+.slide{
+
 }
