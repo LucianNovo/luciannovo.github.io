@@ -48,5 +48,20 @@ var images = [
 "assets/imgs/stageDesign/stage.jpg"];
 
 for(var i=0; i<images.length; i++){
-	$('#pictures').append("<img class=\"ui huge image slide\" src=\"" + images[i] + "\" style=\" width: 100%; height:auto;\">");
+	$('#pictures').append("<img " + "id=\"" + i + "\" class=\"ui huge image slide\" src=\"" + images[i] + "\" style=\" width: 100%; height:auto;\">");
 }
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
