@@ -7,11 +7,7 @@
          url('../fonts/Edmondsans/edmondsans-bold-webfont.svg#edmondsansbold') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
-
-
-
 
 @font-face {
     font-family: 'edmondsansmedium';
@@ -24,9 +20,6 @@
     font-style: normal;
 
 }
-
-
-
 
 @font-face {
     font-family: 'edmondsansregular';
@@ -47,7 +40,12 @@
 body, html{
 	margin: 0px;
 	padding: 0px;
-	overflow:hidden;
+}
+
+#text{
+    height: 97vh; 
+    overflow-y:scroll; 
+    margin: 0px;
 }
 
 #text::-webkit-scrollbar { 
@@ -58,6 +56,21 @@ body, html{
     display: none; 
  }
 
+#pictures{
+    height: 100vh; 
+    overflow-y:scroll; 
+    padding-right:0; 
+    padding-left:0; 
+    margin: 0px;
+}
+
+.article{
+    height: 100%;
+}
+
+.active{
+    border: yellow;
+}
 
 .left{
 	width: 50%;
