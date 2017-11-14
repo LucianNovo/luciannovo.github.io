@@ -3,6 +3,7 @@
 		var allFontsCounter = 0;
 		var regularFontsCounter = 0;
 		var allFontsHTML = '<ul>';
+		var regularFontsHTML = allFontsHTML;
 
 		console.log("variable declaration end");
 
