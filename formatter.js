@@ -1,4 +1,11 @@
-	function populateFontList(fontArr){
+var fontList = [];
+var bodyFonts = [];
+var titleFonts = [];
+var fontArrCopy = [];
+var exampleText = "An Example Sentence";
+var DELAY = 700, clicks = 0, timer = null;
+
+function populateFontList(fontArr){
 		console.log("populateFontList start");
 		var allFontsCounter = 0;
 		var regularFontsCounter = 0;
@@ -28,6 +35,7 @@
 			fontName = fontName.replace(/\s*Regular$/, '');
 			regularFontsHTML += '<li>'+fontName+'</li>';
 			regularFontsCounter++;
+			fontArrCopy.push(fontName);
 		}
 		
 		allFontsCounter++;
@@ -46,17 +54,10 @@
 	}
 -->
 
-var fontList = [];
-var bodyFonts = [];
-var titleFonts = [];
-var exampleText = "An Example Sentence";
-var DELAY = 700, clicks = 0, timer = null;
-
-
 function initWorld(){
 	console.log("initworld start");
 	//populate fonts
-	for (var i = 0; i < 20; i++) {
+	for (var i = 0; i < document.getElementById("regularFontList").children[0].children.length; i++) {
 		fontList.push(
 	    //replace with flash relevant variable
 	    document.getElementById("regularFontList").children[0].children[i].innerText
