@@ -7,58 +7,57 @@
 </head>
 <body>
 
-<noscript>
-<div style="display:block;background:red;color:white;padding:10px;font-weight:bold;">
-You need to have Javascript enabled and to have adobe flash running for this demo to work.
-</div>
-</noscript>
+	<noscript>
+		<div style="display:block;background:red;color:white;padding:10px;font-weight:bold;">
+			You need to have Javascript enabled and to have adobe flash running for this demo to work.
+		</div>
+	</noscript>
 
-<div id="interface">
-  <div id="navigation-container">
-    <div id="select" class="active navigation">select</div>
-    <div id="pair" class="navigation">pair</div>
-  </div>
-  <div id="dialogue-container">
-    <textarea id="text-input" cols="40" rows="5"></textarea>
-    <button class="example-text-option" onclick=paragraphText()>Paragraph</button>
-    <button class="example-text-option" onclick=titleText()>Title</button>
-    <div class="typeface-list" id="title-typeface-list">
-      <div class="typeface-list-label">
-        Title Fonts
-      </div>
-      <div class="typeface-list-clear">
-        x
-      </div>
-    </div>
-    <div class="typeface-list" id="body-typeface-list">
-      <div class="typeface-list-label">
-        Body Fonts
-      </div>
-      <div class="typeface-list-clear">
-        x
-      </div>
-    </div>
-  </div>
-  <div id="display-container">
-  	<div id="regularFontList"></div>
-  </div>
-</div>
+	<div id="interface">
+		<div id="navigation-container">
+			<div id="select" class="active navigation">select</div>
+			<div id="pair" class="navigation">pair</div>
+		</div>
+		<div id="dialogue-container">
+			<textarea id="text-input" cols="40" rows="5"></textarea>
+			<button class="example-text-option" onclick=paragraphText()>Paragraph</button>
+			<button class="example-text-option" onclick=titleText()>Title</button>
+			<div class="typeface-list" id="title-typeface-list">
+				<div class="typeface-list-label">
+					Title Fonts
+				</div>
+				<div class="typeface-list-clear">
+					x
+				</div>
+			</div>
+			<div class="typeface-list" id="body-typeface-list">
+				<div class="typeface-list-label">
+					Body Fonts
+				</div>
+				<div class="typeface-list-clear">
+					x
+				</div>
+			</div>
+		</div>
+		<div id="display-container">
+			<div id="regularFontList"></div>
+		</div>
+	</div>
 
 
-<script type="text/javascript">
-var globalFontArray = [];
-<!--
-function populateFontList(fontArr)
-{
-	var allFontsCounter = 0;
-	var regularFontsCounter = 0;
-	var allFontsHTML = '<ul>';
-
-	for (var key in fontArr)
+	<script type="text/javascript">
+	<!--
+	function populateFontList(fontArr)
 	{
-		var fontName = fontArr[key];
-		globalFontArray.push(string(fontName));
-		
+		console.log("populateFontList start");
+		var allFontsCounter = 0;
+		var regularFontsCounter = 0;
+		var allFontsHTML = '<ul>';
+
+		for (var key in fontArr)
+		{
+			var fontName = fontArr[key];
+
 		// trim
 		fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 		
@@ -88,6 +87,7 @@ function populateFontList(fontArr)
 	// document.getElementById('fontList').innerHTML = allFontsHTML;
 	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
 	initWorld();
+	console.log("populateFontList end");
 }
 -->
 
@@ -101,39 +101,39 @@ var DELAY = 700, clicks = 0, timer = null;
 function initWorld(){
 	//populate fonts
 	for (var i = 0; i < 20; i++) {
-	  fontList.push(
+		fontList.push(
 	    //replace with flash relevant variable
 	    document.getElementById("regularFontList").children[0].children[i].innerText
-	  );
+	    );
 
-	  var newTileText = $(document.createElement('div'));
-	  newTileText.addClass('text-tile-text');
-	  newTileText.text(exampleText);
-	  newTileText.css({'font-family': fontList[i]});
+		var newTileText = $(document.createElement('div'));
+		newTileText.addClass('text-tile-text');
+		newTileText.text(exampleText);
+		newTileText.css({'font-family': fontList[i]});
 
-	  var newTileTypefaceName = $(document.createElement('div'));
-	  newTileTypefaceName.addClass('text-tile-typeface-name');
-	  newTileTypefaceName.text(fontList[i]);
+		var newTileTypefaceName = $(document.createElement('div'));
+		newTileTypefaceName.addClass('text-tile-typeface-name');
+		newTileTypefaceName.text(fontList[i]);
 
-	  var newTile = $(document.createElement('div'));
-	  newTile.addClass('text-tile');
+		var newTile = $(document.createElement('div'));
+		newTile.addClass('text-tile');
 
-	  newTile.append(newTileText).append(newTileTypefaceName);
-	  $("#display-container").append(newTile);
+		newTile.append(newTileText).append(newTileTypefaceName);
+		$("#display-container").append(newTile);
 	}
+};
 
-	// interaction
-	$(function(){
+$(function(){
 
-	    $(".text-tile").on("click", function(e){
+	$(".text-tile").on("click", function(e){
 
 	        clicks++;  //count clicks
 	        let typefacenametemp = $(this).find('div.text-tile-typeface-name').text();
-	      
+
 	        if(clicks === 1) {
 
-	            timer = setTimeout(function() {
-	                addTitleFont(typefacenametemp);
+	        	timer = setTimeout(function() {
+	        		addTitleFont(typefacenametemp);
 	                clicks = 0;             //after action performed, reset counter
 
 	            }, DELAY);
@@ -146,103 +146,102 @@ function initWorld(){
 	        }
 
 	    })
-	    .on("dblclick", function(e){
+	.on("dblclick", function(e){
 	        e.preventDefault();  //cancel system double-click event
 	    });
 
-	});
+});
 
-	function addBodyFont(newFont){
-	  bodyFonts.push(newFont);
-	  
-	  var typefaceListItem = $(document.createElement('div'));
-	  typefaceListItem.addClass('typeface-list-item');
-	  
-	  var typefaceListItemName = $(document.createElement('div'));
-	  typefaceListItemName.addClass('typeface-list-item-name');
-	  typefaceListItemName.text(newFont);
-	  
-	  var typefaceListItemClear = $(document.createElement('div'));
-	  typefaceListItemClear.addClass('typeface-list-item-clear');
-	  typefaceListItemClear.text("x");
-	  
-	  typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
-	  $("#body-typeface-list").append(typefaceListItem);
-	  
-	  console.log(newFont + ' added body font');
+function addBodyFont(newFont){
+	bodyFonts.push(newFont);
+
+	var typefaceListItem = $(document.createElement('div'));
+	typefaceListItem.addClass('typeface-list-item');
+
+	var typefaceListItemName = $(document.createElement('div'));
+	typefaceListItemName.addClass('typeface-list-item-name');
+	typefaceListItemName.text(newFont);
+
+	var typefaceListItemClear = $(document.createElement('div'));
+	typefaceListItemClear.addClass('typeface-list-item-clear');
+	typefaceListItemClear.text("x");
+
+	typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
+	$("#body-typeface-list").append(typefaceListItem);
+
+	console.log(newFont + ' added body font');
+}
+
+function addTitleFont(newFont){
+	titleFonts.push(newFont);
+
+	var typefaceListItem = $(document.createElement('div'));
+	typefaceListItem.addClass('typeface-list-item');
+
+	var typefaceListItemName = $(document.createElement('div'));
+	typefaceListItemName.addClass('typeface-list-item-name');
+	typefaceListItemName.text(newFont);
+
+	var typefaceListItemClear = $(document.createElement('div'));
+	typefaceListItemClear.addClass('typeface-list-item-clear');
+	typefaceListItemClear.text("x");
+
+	typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
+	$("#title-typeface-list").append(typefaceListItem);
+
+	console.log(newFont + ' added body font');
+}
+
+function paragraphText(){
+	$("textarea").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
+	$(".text-tile-text").text($("textarea").text());
+	$(".text-tile-text").css("font-size", "1em");
+}
+
+function titleText(){
+	$("textarea").text("Lorem ipsum dolor sit amet.");
+	$(".text-tile-text").text($("textarea").text());
+	$(".text-tile-text").css("font-size", "2em");
+}
+
+$("textarea").on('input propertychange paste', function() {
+	$(".text-tile-text").text($("textarea").text());
+});
+
+// editing selected fonts
+// clear a single font
+$(document).on("click", ".typeface-list-item-clear", function(e){
+	$(this).parent().remove();
+}); 
+
+//clear entire lists
+$("#body-typeface-list").find(".typeface-list-clear").on("click", function(e){
+	$("#body-typeface-list").find(".typeface-list-item").remove();
+}); 
+
+$("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
+	$("#title-typeface-list").find(".typeface-list-item").remove();
+}); 
+
+// selecting editing modes
+$(".navigation").on("click", function(e){
+	if($(this).hasClass("active")){
+		return
 	}
-
-	function addTitleFont(newFont){
-	  titleFonts.push(newFont);
-	  
-	  var typefaceListItem = $(document.createElement('div'));
-	  typefaceListItem.addClass('typeface-list-item');
-	  
-	  var typefaceListItemName = $(document.createElement('div'));
-	  typefaceListItemName.addClass('typeface-list-item-name');
-	  typefaceListItemName.text(newFont);
-	  
-	  var typefaceListItemClear = $(document.createElement('div'));
-	  typefaceListItemClear.addClass('typeface-list-item-clear');
-	  typefaceListItemClear.text("x");
-	  
-	  typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
-	  $("#title-typeface-list").append(typefaceListItem);
-	  
-	  console.log(newFont + ' added body font');
+	else{
+		$("#select.navigation").toggleClass("active");
+		$("#pair.navigation ").toggleClass("active");
 	}
-
-	function paragraphText(){
-	  $("textarea").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
-	  $(".text-tile-text").text($("textarea").text());
-	  $(".text-tile-text").css("font-size", "1em");
-	}
-
-	function titleText(){
-	  $("textarea").text("Lorem ipsum dolor sit amet.");
-	  $(".text-tile-text").text($("textarea").text());
-	  $(".text-tile-text").css("font-size", "2em");
-	}
-
-	$("textarea").on('input propertychange paste', function() {
-	   $(".text-tile-text").text($("textarea").text());
-	});
-
-	// editing selected fonts
-	// clear a single font
-	$(document).on("click", ".typeface-list-item-clear", function(e){
-	    $(this).parent().remove();
-	}); 
-
-	//clear entire lists
-	$("#body-typeface-list").find(".typeface-list-clear").on("click", function(e){
-	    $("#body-typeface-list").find(".typeface-list-item").remove();
-	}); 
-
-	$("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
-	    $("#title-typeface-list").find(".typeface-list-item").remove();
-	}); 
-
-	// selecting editing modes
-	$(".navigation").on("click", function(e){
-	    if($(this).hasClass("active")){
-	        return
-	    }
-	    else{
-	        $("#select.navigation").toggleClass("active");
-	        $("#pair.navigation ").toggleClass("active");
-	    }
-	});
-};
+});
 
 </script>
 
 <object id="fontListSWF" name="fontListSWF"
-	type="application/x-shockwave-flash"
-	data="FontList.swf" width="1" height="1"
+type="application/x-shockwave-flash"
+data="FontList.swf" width="1" height="1"
 >
-    <param name="movie" value="FontList.swf">
-	<embed src="FontList.swf" width="1" height="1"></embed>
+<param name="movie" value="FontList.swf">
+<embed src="FontList.swf" width="1" height="1"></embed>
 </object>
 
 </body>
