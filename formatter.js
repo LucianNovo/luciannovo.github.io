@@ -44,8 +44,8 @@ function populateFontList(fontArr){
 
 	regularFontsHTML += '</ul>';
 	allFontsHTML += '</ul>';
-	allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
-	regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
+	// allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
+	// regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
 	
 	// document.getElementById('fontList').innerHTML = allFontsHTML;
 	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
