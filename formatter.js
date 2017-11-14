@@ -149,10 +149,10 @@ function titleText(){
 	$(".text-tile-text").css("font-size", "2em");
 }
 
-$("textarea").on('input propertychange paste', function() {
+$("textarea").on('input propertychange paste keyup', function() {
 	$(".text-tile-text").text($("textarea").text());
-    $(this).css(height,"5px");
-    $(this).css(height,$(this).css(scrollHeight)+"px");
+    $(this).height("5px");
+    $(this).height($(this).prop("scrollHeight")+"px");
 });
 
 // editing selected fonts
