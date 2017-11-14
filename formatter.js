@@ -138,12 +138,12 @@ function addTitleFont(newFont){
 }
 
 function paragraphText(){
-	$(".text-tile-text").text($("textarea").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
+	$(".text-tile-text").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
 	$(".text-tile-text").css("font-size", "1em");
 }
 
 function titleText(){
-	$(".text-tile-text").text($("textarea").text("Lorem ipsum dolor sit amet.");
+	$(".text-tile-text").text("Lorem ipsum dolor sit amet.");
 	$(".text-tile-text").css("font-size", "2em");
 }
 

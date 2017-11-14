@@ -54,7 +54,7 @@ body, html{
   overflow: scroll;
 }
 
-#text-input{
+/*#text-input{
   width: 80%;
   height: 100px;
   display: block;
@@ -64,12 +64,10 @@ body, html{
   border: none;
   border-radius: 2px;
   font-size: .75em;
-  /*part necessary for auto grow*/
   overflow: hidden;
   min-height: 50px;
   max-height: 150px;
-
-}
+}*/
 
 .typeface-list{
   width: 80%;
