@@ -43,14 +43,14 @@ body, html{
 
 
 #dialogue-container{
-  background-color: teal;
+  background-color: #f3f3f3;
 }
 
 #display-container{
   grid-row-start: 1;
   grid-row-end: 3;
   grid-column-start: 2;
-  background-color: blue;
+  background-color: white;
   overflow: scroll;
 }
 
@@ -60,6 +60,15 @@ body, html{
   display: block;
   margin: 20px auto;
   resize: none;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 2px;
+  font-size: .75em;
+  /*part necessary for auto grow*/
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 150px;
+
 }
 
 .typeface-list{
@@ -99,7 +108,6 @@ body, html{
 
 .text-tile{
   padding: 20px; 
-  margin: 8px;
   background-color: white;
 }
 
@@ -112,7 +120,4 @@ body, html{
   font-size: .75em;
 }
 
-#regularFontList{
-  /*display: none;*/
-}
 
