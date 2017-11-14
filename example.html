@@ -53,8 +53,11 @@
 		var regularFontsCounter = 0;
 		var allFontsHTML = '<ul>';
 
+		console.log("variable declaration end");
+
 		for (var key in fontArr)
 		{
+			console.log("start loop");
 			var fontName = fontArr[key];
 
 		// trim
@@ -76,7 +79,7 @@
 		}
 		
 		allFontsCounter++;
-		console.log("looped");
+		console.log("end loop");
 		}
 	
 		regularFontsHTML += '</ul>';
