@@ -6,52 +6,52 @@ var exampleText = "An Example Sentence";
 var DELAY = 700, clicks = 0, timer = null;
 
 function populateFontList(fontArr){
-		console.log("populateFontList start");
-		var allFontsCounter = 0;
-		var regularFontsCounter = 0;
-		var allFontsHTML = '<ul>';
-		var regularFontsHTML = allFontsHTML;
+	console.log("populateFontList start");
+	var allFontsCounter = 0;
+	var regularFontsCounter = 0;
+	var allFontsHTML = '<ul>';
+	var regularFontsHTML = allFontsHTML;
 
-		console.log("variable declaration end");
+	console.log("variable declaration end");
 
-		for (var key in fontArr)
-		{
-			console.log("start loop");
-			var fontName = fontArr[key];
-			console.log(fontName);
-		// trim
-		fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-		
-		if (fontName.match(/[_\-\s]Italic$/)
-			|| fontName.match(/[_\-\s](Demi)?[Bb]old$/)
-			|| fontName.match(/[_\-\s]Medium$/)
-			|| fontName.match(/[_\-\s](Ultra)?[Ll]ight$/)
-			|| fontName.match(/[_\-\s]Condensed$/)
-			)
-			allFontsHTML += '<li style="color:#aaa;">'+fontName+'</li>';
-		else
-		{
-			allFontsHTML += '<li>'+fontName+'</li>';
-			fontName = fontName.replace(/\s*Regular$/, '');
-			regularFontsHTML += '<li>'+fontName+'</li>';
-			regularFontsCounter++;
-			fontArrCopy.push(fontName);
-		}
-		
-		allFontsCounter++;
-		console.log("end loop");
-		}
+	for (var key in fontArr)
+	{
+		console.log("start loop");
+		var fontName = fontArr[key];
+		console.log(fontName);
+	// trim
+	fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 	
-		regularFontsHTML += '</ul>';
-		allFontsHTML += '</ul>';
-		allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
-		regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
-		
-		// document.getElementById('fontList').innerHTML = allFontsHTML;
-		document.getElementById('regularFontList').innerHTML = regularFontsHTML;
-		initWorld();
-		console.log("populateFontList end");
+	if (fontName.match(/[_\-\s]Italic$/)
+		|| fontName.match(/[_\-\s](Demi)?[Bb]old$/)
+		|| fontName.match(/[_\-\s]Medium$/)
+		|| fontName.match(/[_\-\s](Ultra)?[Ll]ight$/)
+		|| fontName.match(/[_\-\s]Condensed$/)
+		)
+		allFontsHTML += '<li style="color:#aaa;">'+fontName+'</li>';
+	else
+	{
+		allFontsHTML += '<li>'+fontName+'</li>';
+		fontName = fontName.replace(/\s*Regular$/, '');
+		regularFontsHTML += '<li>'+fontName+'</li>';
+		regularFontsCounter++;
+		fontArrCopy.push(fontName);
 	}
+	
+	allFontsCounter++;
+	console.log("end loop");
+	}
+
+	regularFontsHTML += '</ul>';
+	allFontsHTML += '</ul>';
+	allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
+	regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
+	
+	// document.getElementById('fontList').innerHTML = allFontsHTML;
+	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
+	initWorld();
+	console.log("populateFontList end");
+}
 -->
 
 function initWorld(){
