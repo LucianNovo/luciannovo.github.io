@@ -12,13 +12,9 @@ function populateFontList(fontArr){
 	var allFontsHTML = '<ul>';
 	var regularFontsHTML = allFontsHTML;
 
-	console.log("variable declaration end");
-
 	for (var key in fontArr)
 	{
-		console.log("start loop");
 		var fontName = fontArr[key];
-		console.log(fontName);
 	// trim
 	fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 	
@@ -39,7 +35,6 @@ function populateFontList(fontArr){
 	}
 	
 	allFontsCounter++;
-	console.log("end loop");
 	}
 
 	regularFontsHTML += '</ul>';
@@ -50,12 +45,10 @@ function populateFontList(fontArr){
 	// document.getElementById('fontList').innerHTML = allFontsHTML;
 	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
 	initWorld();
-	console.log("populateFontList end");
 }
 -->
 
 function initWorld(){
-	console.log("initworld start");
 	//populate fonts
 	for (var i = 0; i < document.getElementById("regularFontList").children[0].children.length; i++) {
 		fontList.push(
@@ -80,7 +73,7 @@ function initWorld(){
 	}
 };
 
-$(function(){
+$(document).on("click", ".text-tile", function(e){
 
 	$(".text-tile").on("click", function(e){
 
