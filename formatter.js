@@ -151,9 +151,8 @@ function titleText(){
 
 $("textarea").on('input propertychange paste', function() {
 	$(".text-tile-text").text($("textarea").text());
-    element.style.height = "5px";
-    element.style.height = (element.scrollHeight)+"px";
-}
+    $(this).css(height,"5px");
+    $(this).css(height,$(this).css(scrollHeight)+"px");
 });
 
 // editing selected fonts
