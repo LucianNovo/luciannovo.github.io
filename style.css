@@ -1,0 +1,118 @@
+body, html{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#interface{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  grid-template-rows: 50px 
+}
+
+/* Navigation */
+#navigation-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50px 1fr;
+}
+
+.navigation{}
+
+.navigation:hover{
+  font-weight: 800;
+}
+
+.navigation.active{
+  font-weight: 800;
+}
+
+#select{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: green;
+}
+
+#pair{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  background-color: red;
+}
+
+
+#dialogue-container{
+  background-color: teal;
+}
+
+#display-container{
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  background-color: blue;
+  overflow: scroll;
+}
+
+#text-input{
+  width: 80%;
+  height: 100px;
+  display: block;
+  margin: 20px auto;
+  resize: none;
+}
+
+.typeface-list{
+  width: 80%;
+  display: block;
+  margin: 20px auto;
+}
+
+.example-text-option{
+  padding: 20px auto;
+  text-align: center;
+}
+
+.typeface-list-label{
+  display: inline;
+}
+
+.typeface-list-clear{
+  display: inline;
+  float: right;
+}
+.typeface-list-clear:hover{
+  color:red;
+}
+
+.typeface-list-item-name{
+  display: inline;
+}
+
+.typeface-list-item-clear{
+  display: inline;
+  float: right;
+}
+.typeface-list-item-clear:hover{
+  color:red;
+}
+
+.text-tile{
+  padding: 20px; 
+  margin: 8px;
+  background-color: white;
+}
+
+.text-tile-text{
+  font-size: 2em;
+}
+
+.text-tile-typeface-name{
+  padding-top: 2px;
+  font-size: .75em;
+}
+
+#regularFontList{
+  display: none;
+}
+

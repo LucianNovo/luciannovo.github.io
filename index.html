@@ -3,28 +3,47 @@
 <head>
 	<title>Font List Example</title>
 	<meta charset="utf-8" />
+	<style>
+	@import 'style.css';
+	</style>
 </head>
 <body>
 
 <noscript>
 <div style="display:block;background:red;color:white;padding:10px;font-weight:bold;">
-You need to have Javascript enabled for this demo to work.
+You need to have Javascript enabled and to have adobe flash running for this demo to work.
 </div>
 </noscript>
 
-<table style="width:100%;">
-<tr><td style="vertical-align: top;">
-	<h2>All Fonts:</h2>
-	<div id="fontList">
-	Listing not done yet... <em>(make sure Javascript and Flash are enabled)</em>
-	</div>
-</td><td style="vertical-align: top;">
-	<h2>"Regular" Fonts:</h2>
-	<div id="regularFontList">
-	Listing not done yet... <em>(make sure Javascript and Flash are enabled)</em>
-	</div>
-</td></tr>
-</table>
+<div- id="interface">
+  <div id="navigation-container">
+    <div id="select" class="active navigation">select</div>
+    <div id="pair" class="navigation">pair</div>
+  </div>
+  <div id="dialogue-container">
+    <textarea id="text-input" cols="40" rows="5"></textarea>
+    <button class="example-text-option" onclick=paragraphText()>Paragraph</button>
+    <button class="example-text-option" onclick=titleText()>Title</button>
+    <div class="typeface-list" id="title-typeface-list">
+      <div class="typeface-list-label">
+        Title Fonts
+      </div>
+      <div class="typeface-list-clear">
+        x
+      </div>
+    </div>
+    <div class="typeface-list" id="body-typeface-list">
+      <div class="typeface-list-label">
+        Body Fonts
+      </div>
+      <div class="typeface-list-clear">
+        x
+      </div>
+    </div>
+  </div>
+  <div id="display-container">
+
+
 
 <script type="text/javascript">
 <!--
