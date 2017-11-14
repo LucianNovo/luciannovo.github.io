@@ -39,7 +39,7 @@
 		allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
 		regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
 		
-		document.getElementById('fontList').innerHTML = allFontsHTML;
+		// document.getElementById('fontList').innerHTML = allFontsHTML;
 		document.getElementById('regularFontList').innerHTML = regularFontsHTML;
 		initWorld();
 		console.log("populateFontList end");
