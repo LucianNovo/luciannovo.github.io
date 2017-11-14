@@ -43,27 +43,22 @@ function populateFontList(fontArr){
 	// regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
 	
 	// document.getElementById('fontList').innerHTML = allFontsHTML;
-	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
+	// document.getElementById('regularFontList').innerHTML = regularFontsHTML;
 	initWorld();
 }
 -->
 
 function initWorld(){
 	//populate fonts
-	for (var i = 0; i < document.getElementById("regularFontList").children[0].children.length; i++) {
-		fontList.push(
-	    //replace with flash relevant variable
-	    document.getElementById("regularFontList").children[0].children[i].innerText
-	    );
-
+	for (let i=0; i<fontArrCopy.length;i++){
 		var newTileText = $(document.createElement('div'));
 		newTileText.addClass('text-tile-text');
 		newTileText.text(exampleText);
-		newTileText.css({'font-family': fontList[i]});
+		newTileText.css({'font-family': fontArrCopy[i]});
 
 		var newTileTypefaceName = $(document.createElement('div'));
 		newTileTypefaceName.addClass('text-tile-typeface-name');
-		newTileTypefaceName.text(fontList[i]);
+		newTileTypefaceName.text(fontArrCopy[i]);
 
 		var newTile = $(document.createElement('div'));
 		newTile.addClass('text-tile');
