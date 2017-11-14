@@ -45,10 +45,9 @@
 	</div>
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
 	<!--
-	function populateFontList(fontArr)
-	{
+	function populateFontList(fontArr){
 		console.log("populateFontList start");
 		var allFontsCounter = 0;
 		var regularFontsCounter = 0;
@@ -77,18 +76,19 @@
 		}
 		
 		allFontsCounter++;
+		console.log("looped");
+		}
+	
+		regularFontsHTML += '</ul>';
+		allFontsHTML += '</ul>';
+		allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
+		regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
+		
+		document.getElementById('fontList').innerHTML = allFontsHTML;
+		document.getElementById('regularFontList').innerHTML = regularFontsHTML;
+		initWorld();
+		console.log("populateFontList end");
 	}
-	
-	regularFontsHTML += '</ul>';
-	allFontsHTML += '</ul>';
-	allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
-	regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
-	
-	// document.getElementById('fontList').innerHTML = allFontsHTML;
-	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
-	initWorld();
-	console.log("populateFontList end");
-}
 -->
 
 var fontList = [];
@@ -99,6 +99,7 @@ var DELAY = 700, clicks = 0, timer = null;
 
 
 function initWorld(){
+	console.log("initworld start");
 	//populate fonts
 	for (var i = 0; i < 20; i++) {
 		fontList.push(
