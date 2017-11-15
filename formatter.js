@@ -111,7 +111,7 @@ $(document).on("click", "#title-typeface-list-label", function(e){
 });
 
 $(document).on("click", "#body-typeface-list-label", function(e){
-	if($("#body-typeface-list-label").hasClass("active")){
+	if($("#title-typeface-list-label").hasClass("active")){
 		$("#title-typeface-list-label").toggleClass("active");
 		$("#body-typeface-list-label").toggleClass("active");
 		bodyText();
