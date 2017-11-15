@@ -86,16 +86,16 @@ function initWorld(){
 
 		newTile.append(newTileText).append(newTileTypefaceName);
 		$("#display-container").append(newTile);
-		progressMessages();
 	}
+	progressMessages();
 };
 
 $(document).on("click", ".text-tile", function(e){
 	var typename = $(this).find('div.text-tile-typeface-name').text();
-	if($("#title-typeface-list").hasClass("active") && (jQuery.inArray(typename, titleFonts) === -1)){
+	if($("#title-typeface-list-label").hasClass("active") && (jQuery.inArray(typename, titleFonts) === -1)){
 		addTitleFont(typename);
 	}
-	else if($("#body-typeface-list").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
+	else if($("#body-typeface-list-label").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
 		addBodyFont(typename);
 	}
 });
