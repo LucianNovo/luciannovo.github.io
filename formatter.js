@@ -54,12 +54,16 @@ function progressMessages(){
 	switch (messageState){
 		case 1:
 			$("#walkthrough-text").text("Now click fonts which you would like to use for title fonts.");
+			break;
 		case 2:
 			$("#walkthrough-text").text("When you’re ready for body fonts, click body typefaces.");
+			break;
 		case 3:
 			$("#walkthrough-text").text("Now you can try out some pairs. Go ahead. Press the ‘pair’ button.");
+			break;
 		case 4:
 			$("#walkthrough-text").text("Try out some pairs.  There isn’t anything more to explain. Chill.");
+			break;
 		case 5:
 			$("#walkthrough-text").remove();
 	}
@@ -91,7 +95,7 @@ $(document).on("click", ".text-tile", function(e){
 	if($("#title-typeface-list").hasClass("active") && (jQuery.inArray(typename, titleFonts) === -1)){
 		addTitleFont(typename);
 	}
-	else if("#body-typeface-list").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
+	else if($("#body-typeface-list").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
 		addBodyFont(typename);
 	}
 });
