@@ -89,6 +89,10 @@ body, html{
 .typeface-list-item-clear:hover{
   color:red;
 }
+.typeface-list-item-pairing{
+  display: inline;
+  float: right;
+}
 
 .text-tile{
   padding: 20px; 

@@ -209,29 +209,42 @@ $("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
 function pairMode(){
 	$("#type-tile-container").toggleClass("show")
 	$("#example-text-container").toggleClass("show")
-	//remove xs from dia
+	//if there's no selected typeface, autoselect the first one.
+	if($("#body-typeface-list.typeface-list").find(".bodyFontSelected").length === 0){
+		$("#body-typeface-list").find(".typeface-list-item").first().toggleClass("bodyFontSelected");
+	}
+	if($("#title-typeface-list.typeface-list").find(".titleFontSelected").length === 0){
+		$("#title-typeface-list").find(".typeface-list-item").first().toggleClass("titleFontSelected");
+	}
+	//replace xs with relevant characters
 	$(".typeface-list-item-clear").text("→");
-	$(".typeface-list").find(".selected").find(".typeface-list-item-clear").text("✓");
 	$(".typeface-list-clear").text("");
-	//auto select the first font
-	if($("#body-typeface-list.typeface-list").find(".selected").length){
-		$("#body-example").css("font-family", $("#body-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
-	}
-	else{
-		$("#body-typeface-list.typeface-list-item").first().toggleClass("selected");
-		$("#body-example").css("font-family", $("#body-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
-	}
-
-	if($("#title-typeface-list.typeface-list").find(".selected").length){
-		$("#title-example").css("font-family", $("#title-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
-		$("#subtitle-example").css("font-family", $("#title-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
-	}
-	else{
-		$("#title-typeface-list.typeface-list-item").first().toggleClass("selected");
-		$("#title-example").css("font-family", $("#title-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
-	}
-	//selected are shown in display
+	//make the selected typeface display a checkmark
+	$(".titleFontSelected").find(".typeface-list-item-clear").text("✓");
+	$(".bodyFontSelected").find(".typeface-list-item-clear").text("✓");
+	//replace the clear class on typeface list items with the pair class
+	$(".typeface-list").find(".typeface-list-item-clear").toggleClass("typeface-list-item-clear").toggleClass("typeface-list-item-pairing");
 }
+
+$(document).on("click", ".typeface-list-item", function(e){
+	if($(this).hasClass("bodyFontSelected") || $(this).hasClass("titleFontSelected")){
+		return
+	}
+	else{
+		if($(this).parent().has("#body-typeface-list")){
+			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("→");
+			$(".bodyFontSelected").toggleClass("bodyFontSelected");
+			$(this).toggleClass("bodyFontSelected");
+			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("✓");
+		}
+		else if($(this).parent().has("#title-typeface-list")){
+			$(".titleFontSelected").find(".typeface-list-item-pairing").text("→");
+			$(".titleFontSelected").toggleClass("titleFontSelected");
+			$(this).toggleClass("titleFontSelected");
+			$(".titleFontSelected").find(".typeface-list-item-pairing").text("✓");
+		}
+	}
+});
 
 function selectMode(){
 	$("#type-tile-container").toggleClass("show")
