@@ -146,9 +146,40 @@ body, html{
 }
 
 #type-tile-container{
+  display: none;
   width: 100%;
   height: 100%;
 }
+#type-tile-container.show{
+  display: block;
+}
 
 
+#example-text-container{
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#example-text-container.show{
+  display: grid;
+}
 
+#example-text{
+  margin: auto;
+  width: 80%;
+}
+
+#title-example{
+  font-size: 3em;
+  margin-bottom: .5em;
+}
+
+#subtitle-example{
+  font-size: 1.5em;
+  margin-bottom: .5em;
+}
+
+#body-example{
+  font-size: 1em; 
+  margin-bottom: .5em;
+}

@@ -207,9 +207,26 @@ $("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
 }); 
 
 function pairMode(){
-
+	$("#type-tile-container").toggleClass("show")
+	$("#example-text-container").toggleClass("show")
 }
 
 function selectMode(){
-	
+	$("#type-tile-container").toggleClass("show")
+	$("#example-text-container").toggleClass("show")
 }
+
+$(document).on("click", "#pair", function(e){
+	pairMode();
+	$(this).toggleClass("active");
+	$("#select").toggleClass("active");
+});
+
+$(document).on("click", "#select", function(e){
+	pairMode();
+	$(this).toggleClass("active");
+	$("#pair").toggleClass("active");
+});
+
+
+
