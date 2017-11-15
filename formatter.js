@@ -87,7 +87,7 @@ function initWorld(){
 		newTile.addClass('text-tile');
 
 		newTile.append(newTileText).append(newTileTypefaceName);
-		$("#display-container").append(newTile);
+		$("#type-tile-container").append(newTile);
 	}
 	progressMessages();
 };
@@ -108,8 +108,11 @@ $(document).on("click", "#title-typeface-list-label", function(e){
 });
 
 $(document).on("click", "#body-typeface-list-label", function(e){
-	$("#title-typeface-list-label").toggleClass("active");
-	$("#body-typeface-list-label").toggleClass("active");
+	if($("#body-typeface-list-label").hasClass("active")){
+		$("#title-typeface-list-label").toggleClass("active");
+		$("#body-typeface-list-label").toggleClass("active");
+		bodyText();
+	}
 });
 
 
@@ -161,7 +164,7 @@ function addTitleFont(newFont){
 	}
 }
 
-function paragraphText(){
+function bodyText(){
 	$(".text-tile-text").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
 	$(".text-tile-text").css("font-size", "1em");
 }
@@ -200,3 +203,10 @@ $("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
 	$("#title-typeface-list").find(".typeface-list-item").remove();
 }); 
 
+function pairMode(){
+
+}
+
+function selectMode(){
+	
+}
