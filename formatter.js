@@ -86,12 +86,13 @@ function initWorld(){
 	}
 };
 
-$(document).on("click", ".text-tile-text", function(e){
-	if($(".title-typeface-list").hasClass("active")){
-		addTitleFont($(this).find('div.text-tile-typeface-name').text())
+$(document).on("click", ".text-tile", function(e){
+	var typename = $(this).find('div.text-tile-typeface-name').text();
+	if($("#title-typeface-list").hasClass("active") && (jQuery.inArray(typename, titleFonts) === -1)){
+		addTitleFont(typename);
 	}
-	else{
-		addBodyFont($(this).find('div.text-tile-typeface-name').text())
+	else if("#body-typeface-list").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
+		addBodyFont(typename);
 	}
 });
 
