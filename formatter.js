@@ -209,6 +209,28 @@ $("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
 function pairMode(){
 	$("#type-tile-container").toggleClass("show")
 	$("#example-text-container").toggleClass("show")
+	//remove xs from dia
+	$(".typeface-list-item-clear").text("→");
+	$(".typeface-list").find(".selected").find(".typeface-list-item-clear").text("✓");
+	$(".typeface-list-clear").text("");
+	//auto select the first font
+	if($("#body-typeface-list.typeface-list").find(".selected").length){
+		$("#body-example").css("font-family", $("#body-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
+	}
+	else{
+		$("#body-typeface-list.typeface-list-item").first().toggleClass("selected");
+		$("#body-example").css("font-family", $("#body-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
+	}
+
+	if($("#title-typeface-list.typeface-list").find(".selected").length){
+		$("#title-example").css("font-family", $("#title-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
+		$("#subtitle-example").css("font-family", $("#title-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
+	}
+	else{
+		$("#title-typeface-list.typeface-list-item").first().toggleClass("selected");
+		$("#title-example").css("font-family", $("#title-typeface-list.typeface-list").find(".selected").find(".typeface-list-item-name").text());
+	}
+	//selected are shown in display
 }
 
 function selectMode(){
