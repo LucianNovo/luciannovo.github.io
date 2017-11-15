@@ -2,6 +2,7 @@ var fontList = [];
 var bodyFonts = [];
 var titleFonts = [];
 var fontArrCopy = [];
+var messageState = 0;
 var exampleText = "An Example Sentence";
 var DELAY = 700, clicks = 0, timer = null;
 
@@ -48,6 +49,21 @@ function populateFontList(fontArr){
 }
 -->
 
+function progressMessages(){
+	messageState++;
+	switch messageState:
+		case 1:
+			$("#walkthrough-text").text("Now click fonts which you would like to use for title fonts.");
+		case 2:
+			$("#walkthrough-text").text("When you’re ready for body fonts, click body typefaces.");
+		case 3:
+			$("#walkthrough-text").text("Now you can try out some pairs. Go ahead. Press the ‘pair’ button.");
+		case 4:
+			$("#walkthrough-text").text("Try out some pairs.  There isn’t anything more to explain. Chill.");
+		case 5:
+			$("#walkthrough-text").remove();
+}
+
 function initWorld(){
 	//populate fonts
 	for (let i=0; i<fontArrCopy.length;i++){
@@ -65,36 +81,17 @@ function initWorld(){
 
 		newTile.append(newTileText).append(newTileTypefaceName);
 		$("#display-container").append(newTile);
+		progressMessages();
 	}
 };
 
-$(document).on("click", ".text-tile", function(e){
-
-	$(".text-tile").on("click", function(e){
-
-	        clicks++;  //count clicks
-	        let typefacenametemp = $(this).find('div.text-tile-typeface-name').text();
-
-	        if(clicks === 1) {
-
-	        	timer = setTimeout(function() {
-	        		addTitleFont(typefacenametemp);
-	                clicks = 0;             //after action performed, reset counter
-
-	            }, DELAY);
-
-	        } else {
-
-	            clearTimeout(timer);    //prevent single-click action
-	            addBodyFont(typefacenametemp);  //perform double-click action
-	            clicks = 0;             //after action performed, reset counter
-	        }
-
-	    })
-	.on("dblclick", function(e){
-	        e.preventDefault();  //cancel system double-click event
-	    });
-
+$(document).on("click", ".text-tile-text", function(e){
+	if($(".title-typeface-list").hasClass("active")){
+		addTitleFont($(this).find('div.text-tile-typeface-name').text())
+	}
+	else{
+		addBodyFont($(this).find('div.text-tile-typeface-name').text())
+	}
 });
 
 function addBodyFont(newFont){
