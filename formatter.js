@@ -3,6 +3,8 @@ var bodyFonts = [];
 var titleFonts = [];
 var fontArrCopy = [];
 var messageState = 0;
+var firstBodyAdd = 1;
+var firstTitleAdd = 1;
 var exampleText = "An Example Sentence";
 var DELAY = 700, clicks = 0, timer = null;
 
@@ -129,6 +131,10 @@ function addBodyFont(newFont){
 	$("#body-typeface-list").append(typefaceListItem);
 
 	console.log(newFont + ' added body font');
+	if(firstBodyAdd){
+		progressMessages();
+		firstBodyAdd = 0;
+	}
 }
 
 function addTitleFont(newFont){
@@ -148,7 +154,11 @@ function addTitleFont(newFont){
 	typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
 	$("#title-typeface-list").append(typefaceListItem);
 
-	console.log(newFont + ' added body font');
+	console.log(newFont + ' added title font');
+	if(firstTitleAdd){
+		progressMessages();
+		firstTitleAdd = 0;
+	}
 }
 
 function paragraphText(){
