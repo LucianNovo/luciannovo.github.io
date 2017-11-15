@@ -9,14 +9,7 @@ body, html{
   width: 100%;
   display: grid;
   grid-template-columns: 3fr 6fr;
-  grid-template-rows: 50px 
-}
-
-/* Navigation */
-#navigation-container{
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 1fr 125px;
 }
 
 .navigation{}
@@ -29,27 +22,19 @@ body, html{
   font-weight: 800;
 }
 
-#select{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: green;
-}
-
-#pair{
-  grid-column-start: 2;
-  grid-column-end: 2;
-  background-color: red;
-}
-
-
 #dialogue-container{
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-row-end: 2;  
   background-color: #f3f3f3;
+  font-family: "SF UI Text";
+  font-weight: 400;
 }
 
 #display-container{
-  grid-row-start: 1;
-  grid-row-end: 3;
   grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
   background-color: white;
   overflow: scroll;
 }
@@ -72,7 +57,7 @@ body, html{
 .typeface-list{
   width: 80%;
   display: block;
-  margin: 20px auto;
+  margin: 32px 32px;
 }
 
 .example-text-option{
@@ -82,6 +67,7 @@ body, html{
 
 .typeface-list-label{
   display: inline;
+  text-decoration: underline;
 }
 
 .typeface-list-clear{
@@ -118,4 +104,43 @@ body, html{
   font-size: .75em;
 }
 
+.walkthrough-text{
+  font-size: .75em;
+  width: 80%;
+  margin: 32px 32px;
+  padding: 0;
+}
 
+#button-container{
+  grid-row-start: 2;
+  grid-row-end: 3; 
+  grid-column-start: 1;
+  grid-column-end: 2; 
+  background-color: #f3f3f3;
+}
+
+#button-container-container{
+  margin: 32px 32px;
+  font-family: "SF UI Text";
+  font-weight: 400;
+}
+
+.dialogue-button{
+  border-radius: 4px;
+  border: 2px solid #686868;
+  padding: 15px 18px;
+  color: #505050;
+  width: 30%;
+  display: inline-block;
+  text-align: center;
+  margin: 12px 8px 0px 0px;
+}
+
+.dialogue-button.active{
+  opacity: .3;
+}
+
+.dialogue-button:hover{
+  border: 2px solid #000000;
+  color: #000000;
+}
