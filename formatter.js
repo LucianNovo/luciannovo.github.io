@@ -51,7 +51,7 @@ function populateFontList(fontArr){
 
 function progressMessages(){
 	messageState++;
-	switch messageState:
+	switch (messageState){
 		case 1:
 			$("#walkthrough-text").text("Now click fonts which you would like to use for title fonts.");
 		case 2:
@@ -62,6 +62,7 @@ function progressMessages(){
 			$("#walkthrough-text").text("Try out some pairs.  There isn’t anything more to explain. Chill.");
 		case 5:
 			$("#walkthrough-text").remove();
+	}
 }
 
 function initWorld(){
