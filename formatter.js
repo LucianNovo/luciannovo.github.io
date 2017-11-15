@@ -103,8 +103,11 @@ $(document).on("click", ".text-tile", function(e){
 });
 
 $(document).on("click", "#title-typeface-list-label", function(e){
-	$("#body-typeface-list-label").toggleClass("active");
-	$("#title-typeface-list-label").toggleClass("active");
+	if($("#body-typeface-list-label").hasClass("active")){
+		$("#title-typeface-list-label").toggleClass("active");
+		$("#body-typeface-list-label").toggleClass("active");
+		titleText();
+	}
 });
 
 $(document).on("click", "#body-typeface-list-label", function(e){
