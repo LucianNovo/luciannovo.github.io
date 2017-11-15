@@ -100,6 +100,17 @@ $(document).on("click", ".text-tile", function(e){
 	}
 });
 
+$(document).on("click", "#title-typeface-list-label", function(e){
+	$("#body-typeface-list-label").toggleClass("active");
+	$("#title-typeface-list-label").toggleClass("active");
+});
+
+$(document).on("click", "#body-typeface-list-label", function(e){
+	$("#title-typeface-list-label").toggleClass("active");
+	$("#body-typeface-list-label").toggleClass("active");
+});
+
+
 function addBodyFont(newFont){
 	bodyFonts.push(newFont);
 
@@ -159,25 +170,23 @@ function titleText(){
 // editing selected fonts
 // clear a single font
 $(document).on("click", ".typeface-list-item-clear", function(e){
+	if($("#title-typeface-list").hasClass("active")){
+		titleFonts.splice(titleFonts.indexOf($(this).parent().find(".typeface-list-item").text()), 1);
+	}
+	else if($("#title-typeface-list").hasClass("active")){
+		bodyFonts.splice(bodyFonts.indexOf($(this).parent().find(".typeface-list-item").text()), 1);
+	}
 	$(this).parent().remove();
 }); 
 
 //clear entire lists
 $("#body-typeface-list").find(".typeface-list-clear").on("click", function(e){
+	bodyFonts = [];
 	$("#body-typeface-list").find(".typeface-list-item").remove();
 }); 
 
 $("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
+	titleFonts = [];
 	$("#title-typeface-list").find(".typeface-list-item").remove();
 }); 
 
-// selecting editing modes
-$(".navigation").on("click", function(e){
-	if($(this).hasClass("active")){
-		return
-	}
-	else{
-		$("#select.navigation").toggleClass("active");
-		$("#pair.navigation ").toggleClass("active");
-	}
-});
