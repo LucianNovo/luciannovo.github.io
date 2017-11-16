@@ -8,7 +8,7 @@ body, html{
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 3fr 6fr;
+  grid-template-columns: 315px 1fr;
   grid-template-rows: 1fr 125px;
 }
 
@@ -29,6 +29,7 @@ body, html{
   background-color: #f3f3f3;
   font-family: "SF UI Text";
   font-weight: 400;
+  max-width: 315px;
 }
 
 #display-container{
@@ -39,25 +40,14 @@ body, html{
   overflow: scroll;
 }
 
-/*#text-input{
-  width: 80%;
-  height: 100px;
-  display: block;
-  margin: 20px auto;
-  resize: none;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 2px;
-  font-size: .75em;
-  overflow: hidden;
-  min-height: 50px;
-  max-height: 150px;
-}*/
-
 .typeface-list{
   width: 80%;
   display: block;
   margin: 32px 32px;
+}
+
+.typeface-list.active > .list-label > .list-name{
+  text-decoration: underline;
 }
 
 .example-text-option{
@@ -65,33 +55,90 @@ body, html{
   text-align: center;
 }
 
-.typeface-list-label{
+.list-name{
   display: inline;
-  text-decoration: underline;
+  font-weight: 600;
 }
 
-.typeface-list-clear{
+.list-clear{
   display: inline;
   float: right;
 }
-.typeface-list-clear:hover{
+
+.list-clear:hover{
   color:red;
 }
 
-.typeface-list-item-name{
+.body-list-item-name{
   display: inline;
 }
 
-.typeface-list-item-clear{
+.body-list-item-name{
+  display: inline;
+}
+
+.body-list-item > .body-list-item-name::before {
+     content: "";
+}
+
+.body-list-item.paired-mode > .body-list-item-name::before {
+     content: "◎";
+}
+
+.body-list-item.paired-mode.selected > .body-list-item-name::before {
+     content: "◉";
+}
+
+.body-list-item.paired-mode > .body-list-item-clear{
+  display: none;
+}
+
+.body-list-item-clear{
   display: inline;
   float: right;
 }
-.typeface-list-item-clear:hover{
+
+.body-list-item-clear:hover{
   color:red;
 }
-.typeface-list-item-pairing{
+
+.body-list-item-pairing{
   display: inline;
   float: right;
+}
+
+.title-list-item-name{
+  display: inline;
+}
+
+.title-list-item-clear{
+  display: inline;
+  float: right;
+}
+
+.title-list-item-clear:hover{
+  color:red;
+}
+
+.title-list-item-pairing{
+  display: inline;
+  float: right;
+}
+
+.title-list-item > .title-list-item-name::before {
+     content: "";
+}
+
+.title-list-item.paired-mode > .title-list-item-name::before {
+     content: "◎";
+}
+
+.title-list-item.paired-mode.selected > .title-list-item-name::before {
+     content: "◉";
+}
+
+.title-list-item.paired-mode > .title-list-item-clear{
+  display: none;
 }
 
 .text-tile{
@@ -113,6 +160,7 @@ body, html{
   width: 80%;
   margin: 32px 32px;
   padding: 0;
+  height: 50px;
 }
 
 #button-container{
@@ -121,6 +169,7 @@ body, html{
   grid-column-start: 1;
   grid-column-end: 2; 
   background-color: #f3f3f3;
+  max-width: 315px;
 }
 
 #button-container-container{
@@ -134,7 +183,7 @@ body, html{
   border: 2px solid #686868;
   padding: 15px 18px;
   color: #505050;
-  width: 30%;
+  width: 29%;
   display: inline-block;
   text-align: center;
   margin: 12px 8px 0px 0px;

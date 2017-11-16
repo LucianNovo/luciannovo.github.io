@@ -71,8 +71,8 @@ function progressMessages(){
 	}
 }
 
+
 function initWorld(){
-	//populate fonts
 	for (let i=0; i<fontArrCopy.length;i++){
 		var newTileText = $(document.createElement('div'));
 		newTileText.addClass('text-tile-text');
@@ -92,49 +92,63 @@ function initWorld(){
 	progressMessages();
 };
 
+//populate typefaces into relevant lists in dialogue
 $(document).on("click", ".text-tile", function(e){
 	var typename = $(this).find('div.text-tile-typeface-name').text();
-	if($("#title-typeface-list-label").hasClass("active") && (jQuery.inArray(typename, titleFonts) === -1)){
+	if($("#title-list").hasClass("active") && (jQuery.inArray(typename, titleFonts) === -1)){
 		addTitleFont(typename);
 	}
-	else if($("#body-typeface-list-label").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
+	else if($("#body-list").hasClass("active") && (jQuery.inArray(typename, bodyFonts) === -1)){
 		addBodyFont(typename);
 	}
 });
 
-$(document).on("click", "#title-typeface-list-label", function(e){
-	if($("#body-typeface-list-label").hasClass("active")){
-		$("#title-typeface-list-label").toggleClass("active");
-		$("#body-typeface-list-label").toggleClass("active");
+//change which list is active
+$(document).on("click", "#body-list-name", function(e){
+	if(!$("#body-list").hasClass("active")){
+		$("#body-list").toggleClass("active");
+		$("#title-list").toggleClass("active");
+		console.log("body list active");
+		bodyText();
+	}
+});
+
+$(document).on("click", "#title-list-name", function(e){
+	if(!$("#title-list").hasClass("active")){
+		$("#title-list").toggleClass("active");
+		$("#body-list").toggleClass("active");
+		console.log("title list active");
 		titleText();
 	}
 });
 
-$(document).on("click", "#body-typeface-list-label", function(e){
-	if($("#title-typeface-list-label").hasClass("active")){
-		$("#title-typeface-list-label").toggleClass("active");
-		$("#body-typeface-list-label").toggleClass("active");
-		bodyText();
-	}
-});
+function bodyText(){
+	$(".text-tile-text").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
+	$(".text-tile-text").css("font-size", "1em");
+}
+
+function titleText(){
+	$(".text-tile-text").text("Lorem ipsum dolor sit amet.");
+	$(".text-tile-text").css("font-size", "2em");
+}
 
 
 function addBodyFont(newFont){
 	bodyFonts.push(newFont);
 
 	var typefaceListItem = $(document.createElement('div'));
-	typefaceListItem.addClass('typeface-list-item');
+	typefaceListItem.addClass('body-list-item');
 
 	var typefaceListItemName = $(document.createElement('div'));
-	typefaceListItemName.addClass('typeface-list-item-name');
+	typefaceListItemName.addClass('body-list-item-name');
 	typefaceListItemName.text(newFont);
 
 	var typefaceListItemClear = $(document.createElement('div'));
-	typefaceListItemClear.addClass('typeface-list-item-clear');
+	typefaceListItemClear.addClass('body-list-item-clear');
 	typefaceListItemClear.text("x");
 
 	typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
-	$("#body-typeface-list").append(typefaceListItem);
+	$("#body-list").append(typefaceListItem);
 
 	console.log(newFont + ' added body font');
 	if(firstBodyAdd){
@@ -147,18 +161,18 @@ function addTitleFont(newFont){
 	titleFonts.push(newFont);
 
 	var typefaceListItem = $(document.createElement('div'));
-	typefaceListItem.addClass('typeface-list-item');
+	typefaceListItem.addClass('title-list-item');
 
 	var typefaceListItemName = $(document.createElement('div'));
-	typefaceListItemName.addClass('typeface-list-item-name');
+	typefaceListItemName.addClass('title-list-item-name');
 	typefaceListItemName.text(newFont);
 
 	var typefaceListItemClear = $(document.createElement('div'));
-	typefaceListItemClear.addClass('typeface-list-item-clear');
+	typefaceListItemClear.addClass('title-list-item-clear');
 	typefaceListItemClear.text("x");
 
 	typefaceListItem.append(typefaceListItemName).append(typefaceListItemClear);
-	$("#title-typeface-list").append(typefaceListItem);
+	$("#title-list").append(typefaceListItem);
 
 	console.log(newFont + ' added title font');
 	if(firstTitleAdd){
@@ -167,92 +181,82 @@ function addTitleFont(newFont){
 	}
 }
 
-function bodyText(){
-	$(".text-tile-text").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia risus metus, id ornare elit porttitor suscipit. Fusce pretium scelerisque felis non imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vehicula felis eget dolor vehicula interdum.");
-	$(".text-tile-text").css("font-size", "1em");
-}
-
-function titleText(){
-	$(".text-tile-text").text("Lorem ipsum dolor sit amet.");
-	$(".text-tile-text").css("font-size", "2em");
-}
-
-// $("textarea").on('input propertychange paste', function() {
-// 	$(".text-tile-text").text($("textarea").text());
-//     $(this).height("5px");
-//     $(this).height($(this).prop("scrollHeight")+"px");
-// });
-
-// editing selected fonts
 // clear a single font
-$(document).on("click", ".typeface-list-item-clear", function(e){
-	if($("#title-typeface-list").hasClass("active")){
-		titleFonts.splice(titleFonts.indexOf($(this).parent().find(".typeface-list-item").text()), 1);
-	}
-	else if($("#title-typeface-list").hasClass("active")){
-		bodyFonts.splice(bodyFonts.indexOf($(this).parent().find(".typeface-list-item").text()), 1);
-	}
+$(document).on("click", ".body-list-item-clear", function(e){
+	bodyFonts.splice(bodyFonts.indexOf($(this).parent().find(".body-list-item").text()), 1);
+	$(this).parent().remove();
+}); 
+$(document).on("click", ".title-list-item-clear", function(e){
+	bodyFonts.splice(bodyFonts.indexOf($(this).parent().find(".title-list-item").text()), 1);
 	$(this).parent().remove();
 }); 
 
-//clear entire lists
-$("#body-typeface-list").find(".typeface-list-clear").on("click", function(e){
+// clear entire lists
+$("#body-list").find(".list-clear").on("click", function(e){
 	bodyFonts = [];
-	$("#body-typeface-list").find(".typeface-list-item").remove();
+	$(".body-list-item").remove();
+}); 
+$("#title-list").find(".list-clear").on("click", function(e){
+	titleFonts = [];
+	$(".title-list-item").remove();
 }); 
 
-$("#title-typeface-list").find(".typeface-list-clear").on("click", function(e){
-	titleFonts = [];
-	$("#title-typeface-list").find(".typeface-list-item").remove();
-}); 
 
 function pairMode(){
+	//remove the tile interface, show the example text
 	$("#type-tile-container").toggleClass("show")
 	$("#example-text-container").toggleClass("show")
+
 	//if there's no selected typeface, autoselect the first one.
-	if($("#body-typeface-list.typeface-list").find(".bodyFontSelected").length === 0){
-		$("#body-typeface-list").find(".typeface-list-item").first().toggleClass("bodyFontSelected");
+	if($(".body-list-item.selected").length===0){
+		$(".body-list-item").first().addClass("selected");
 	}
-	if($("#title-typeface-list.typeface-list").find(".titleFontSelected").length === 0){
-		$("#title-typeface-list").find(".typeface-list-item").first().toggleClass("titleFontSelected");
+	if($(".title-list-item.selected").length===0){
+		$(".title-list-item").first().addClass("selected");
 	}
+
 	//replace xs with relevant characters
-	$(".typeface-list-item-clear").text("→");
-	$(".typeface-list-clear").text("");
-	//make the selected typeface display a checkmark
-	$(".titleFontSelected").find(".typeface-list-item-clear").text("✓");
-	$(".bodyFontSelected").find(".typeface-list-item-clear").text("✓");
-	//replace the clear class on typeface list items with the pair class
-	$(".typeface-list").find(".typeface-list-item-clear").toggleClass("typeface-list-item-clear").toggleClass("typeface-list-item-pairing");
-	console.log("pair mode");
+	$(".title-list-item").toggleClass("paired-mode");
+	$(".body-list-item").toggleClass("paired-mode");
+
+	//remove ability to clear lists
+	$(".list-clear").css("display", "none");
+	$(".title-list-item-pairing").css("display", "none");
 }
 
 
-// when an item is clicked, make it 
-$(document).on("click", ".typeface-list-item", function(e){
-	if($(this).hasClass("bodyFontSelected") || $(this).hasClass("titleFontSelected")){
+// when an item is clicked, make it populate to the example text 
+$(document).on("click", ".body-list-item-name", function(e){
+	if($(this).parent().hasClass("selected")){
 		return
 	}
 	else{
-		if($(this).parent().has("#body-typeface-list").length){
-			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("→");
-			$(".bodyFontSelected").toggleClass("bodyFontSelected");
-			$(this).toggleClass("bodyFontSelected");
-			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("→");
-		}
-		else if($(this).parent().has("#title-typeface-list").length){
-			$(".titleFontSelected").find(".typeface-list-item-pairing").text("→");
-			$(".titleFontSelected").toggleClass("titleFontSelected");
-			$(this).toggleClass("titleFontSelected");
-			$(".titleFontSelected").find(".typeface-list-item-pairing").text("✓");
-		}
+		$(".body-list-item.selected").toggleClass("selected");
+		$(this).parent().toggleClass("selected");
+		$("#body-example").css("font-family", $(this).text());
 	}
 });
+
+// when an item is clicked, make it populate to the example text 
+$(document).on("click", ".title-list-item-name", function(e){
+	if($(this).parent().hasClass("selected")){
+		return
+	}
+	else{
+		$(".title-list-item.selected").toggleClass("selected");
+		$(this).parent().toggleClass("selected");
+		$("#title-example").css("font-family", $(this).text());
+		$("#subtitle-example").css("font-family", $(this).text());
+	}
+});
+
 
 function selectMode(){
 	$("#type-tile-container").toggleClass("show")
 	$("#example-text-container").toggleClass("show")
+
 }
+
 
 $(document).on("click", "#pair", function(e){
 	pairMode();
