@@ -221,7 +221,6 @@ function pairMode(){
 
 	//remove ability to clear lists
 	$(".list-clear").css("display", "none");
-	$(".title-list-item-pairing").css("display", "none");
 }
 
 
@@ -254,7 +253,8 @@ $(document).on("click", ".title-list-item-name", function(e){
 function selectMode(){
 	$("#type-tile-container").toggleClass("show")
 	$("#example-text-container").toggleClass("show")
-
+	//enable ability to clear lists
+	$(".list-clear").css("display", "inline");
 }
 
 
