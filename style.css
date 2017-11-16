@@ -27,7 +27,7 @@ body, html{
   grid-row-start: 1;
   grid-row-end: 2;  
   background-color: #f3f3f3;
-  font-family: "SF UI Text";
+  font-family: "Arial";
   font-weight: 400;
   max-width: 315px;
 }
@@ -57,7 +57,6 @@ body, html{
 
 .list-name{
   display: inline;
-  font-weight: 600;
 }
 
 .list-clear{
@@ -174,7 +173,7 @@ body, html{
 
 #button-container-container{
   margin: 32px 32px;
-  font-family: "SF UI Text";
+  font-family: "Arial";
   font-weight: 400;
 }
 
