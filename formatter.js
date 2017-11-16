@@ -210,9 +210,12 @@ function pairMode(){
 	//if there's no selected typeface, autoselect the first one.
 	if($(".body-list-item.selected").length===0){
 		$(".body-list-item").first().addClass("selected");
+		$("#body-example").css("font-family", $(".body-list-item.selected").find(".body-list-item-name").text());
 	}
 	if($(".title-list-item.selected").length===0){
 		$(".title-list-item").first().addClass("selected");
+		$("#title-example").css("font-family", $(".title-list-item.selected").find(".title-list-item-name").text());
+		$("#subtitle-example").css("font-family", $(".title-list-item.selected").find(".title-list-item-name").text());
 	}
 
 	//replace xs with relevant characters
