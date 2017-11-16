@@ -224,20 +224,23 @@ function pairMode(){
 	$(".bodyFontSelected").find(".typeface-list-item-clear").text("✓");
 	//replace the clear class on typeface list items with the pair class
 	$(".typeface-list").find(".typeface-list-item-clear").toggleClass("typeface-list-item-clear").toggleClass("typeface-list-item-pairing");
+	console.log("pair mode");
 }
 
+
+// when an item is clicked, make it 
 $(document).on("click", ".typeface-list-item", function(e){
 	if($(this).hasClass("bodyFontSelected") || $(this).hasClass("titleFontSelected")){
 		return
 	}
 	else{
-		if($(this).parent().has("#body-typeface-list")){
+		if($(this).parent().has("#body-typeface-list").length){
 			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("→");
 			$(".bodyFontSelected").toggleClass("bodyFontSelected");
 			$(this).toggleClass("bodyFontSelected");
-			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("✓");
+			$(".bodyFontSelected").find(".typeface-list-item-pairing").text("→");
 		}
-		else if($(this).parent().has("#title-typeface-list")){
+		else if($(this).parent().has("#title-typeface-list").length){
 			$(".titleFontSelected").find(".typeface-list-item-pairing").text("→");
 			$(".titleFontSelected").toggleClass("titleFontSelected");
 			$(this).toggleClass("titleFontSelected");
