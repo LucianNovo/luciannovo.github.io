@@ -216,9 +216,20 @@ body, html{
   display: grid;
 }
 
-#example-text{
-  margin: auto;
-  width: 80%;
+@media screen 
+  and (min-width: 1600px){ 
+    #example-text{
+      margin: auto;
+      width: 40%;
+    }
+}
+
+@media screen 
+  and (max-width: 1599px){ 
+    #example-text{
+      margin: auto;
+      width: 70%;
+    }
 }
 
 #title-example{
